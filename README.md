@@ -10,3 +10,6 @@ Login
 
 ### localhost:3000/search
 Busca
+
+### localhost:3000/update
+atualização de registro
