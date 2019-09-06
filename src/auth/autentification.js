@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model("Users");
 
 exports.generateToken = (data) => {
-    return jwt.sign(data, process.env.token_key, { expiresIn: '1d'});
+    return jwt.sign(data, process.env.token_key, { expiresIn: 60 * 30, });
 }
 
 exports.decodeToken = (token) => {
@@ -24,6 +24,7 @@ exports.authorizeToken = (req, res, next) => {
             jwt.verify(token, process.env.token_key, function(error, decoded) {
                 if (user.token != token) { res.status(401).json ({ meesage: 'Não autorizado' }); return }
                 if (error) {
+                    console.log(error);
                     res.status(401).json ({
                         meesage: 'Não autorizado'
                     });

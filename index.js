@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/sign_up", routes);
 app.use("/sign_in", routes);
 app.use("/search", routes);
+app.use("/update", routes)
 
 const server = http.createServer(app);
 server.listen(3000, console.log("Server iniciado"));

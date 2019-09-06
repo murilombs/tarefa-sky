@@ -11,7 +11,8 @@ exports.updateUserByID = (id, update, callback) => {
     const user_id = toObjectId(id);
     User.findOneAndUpdate({_id: user_id}, { 
         $set: {
-            name: update
+            nome: update.nome,
+            ultimo_login: new Date()
         }
     }, callback)
 }

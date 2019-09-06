@@ -18,6 +18,10 @@ const userSchema = new Schema({
     token: {
         type: String,
         required: true
+    },
+    ultimo_login: {
+        type: Date,
+        required: true
     }
 }, {
     timestamps: true

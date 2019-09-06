@@ -54,7 +54,8 @@ exports.newUser = (req, res, next) => {
                     email: req.body.email,
                     senha: passwordHash(req.body.senha),
                     telefones: req.body.telefones,
-                    token: token
+                    token: token,
+                    ultimo_login: new Date()
                 }, (err, user) => {
                     res.status(201).json(user);
                 }); 
@@ -67,7 +68,7 @@ exports.newUser = (req, res, next) => {
 
 exports.updateUser = (req, res, next) => {
     try {
-        repository.updateUserByID(req.params.id, req.body.name, (err, user) => {
+        repository.updateUserByID(req.params.id, req.body, (err, user) => {
             res.status(201).json(user);
         })
     } catch (error) {
